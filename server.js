@@ -27,6 +27,8 @@ APP.get("/reservation", (req, res) => res.sendFile(path.join(__dirname, "reserva
 
 APP.get("/tables", (req, res) => res.sendFile(path.join(__dirname, "tables.html")));
 
+APP.get("/home", (req, res) => res.sendFile(path.join(__dirname, "home.html")));
+
 //Two for getting the two lists.
 APP.get("/api/reservations", (req, res) => res.json(reservations));
 
