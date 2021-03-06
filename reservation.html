@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>Hot Restaurant - Reservations</title>
+</head>
+
+<body>
+    <header>
+        <a href="home.html">
+            <img src="./assets/Restaurant_logo.svg" class="img-logo">
+            </a>
+        <div class="container">
+            <a href="home.html">
+            <div class="home-button" id="home-button"><i class="fas fa-home"></i>
+            </div>
+        </a>
+        </div>
+    </header>
+
+    <div class="row" style="padding-top: 92px;">
+        <div class="col-sm-12">
+            <div class="image-FS">
+                <h1 class="hero-text">We only have 5 tables! Book your seat before they all are gone!</h1>
+                <div class="button-container">
+                    <a href="tables.html">
+
+                        <button class="red" style="bottom: 20px;"><i class="far fa-calendar-alt"
+                                style="padding-right: 8px;"></i>View tables</button></a>
+    
+                         <a href="reservation.html">    
+                        <button class="white" style="bottom: 20px;"><i class="far fa-credit-card"
+                                style="padding-right: 8px;"></i>Make reservation</button></a>   
+                       
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-text"><i class="far fa-calendar-plus" style="padding-right: 12px;"></i>Table reservation</h1>
+                    <form class="reservation" method="POST" id="reservation-form">
+
+                        <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" placeholder="Name" id="Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="phone-number">Phone number</label>
+                        <input type="tel" class="form-control" placeholder="Phone-number" id="phone-number" required>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" placeholder="Email" id="email" required>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="ID">ID</label>
+                        <input type="ID" class="form-control" placeholder="ID" id="ID" required>
+                        </div>
+
+                        <button class="red" type="submit" id="submit-form" style="margin-bottom: 12px; margin-left: 0px;"><i class="fas fa-utensils" style="padding-right: 8px;"></i>Submit
+                            booking</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //Defining a variable and getting that variable from the html and its the oh ya its the button right.
+        const button = document.getElementById("submit-form");
+        var mydata;
+
+        //Adding an event listener you dont need to say that click part.
+        button.addEventListener("click", (somethingElse) =>
+        {
+            //Preventing from refreshing the page.
+            somethingElse.preventDefault();
+
+            //Adding four variables to the each of the from inputs.
+            const name = document.getElementById("Name").value;
+            const phonenumber = document.getElementById("phone-number").value;
+            const email = document.getElementById("email").value;
+            const id = document.getElementById("ID").value;
+
+            //How would you creating or no creating an object that were going to push into the reservations array is that the best way to say that conner?
+            const newReservation = {
+                name: name,
+                phone: phonenumber,
+                email: email,
+                id: id
+            }
+
+            //ok here we go so this is stop 
+            fetch("/api/reservations", 
+            {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newReservation)
+            })
+                .then(response => response.json())
+                .then(data => mydata = data)
+                .catch(error => console.error(error));
+        });
+
+        console.log(mydata);
+    </script>
+
+    </body>
+    </html>

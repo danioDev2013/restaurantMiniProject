@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>Hot Restaurant - Tables</title>
+</head>
+
+<body>
+    <header>
+        <a href="home.html">
+            <img src="./assets/Restaurant_logo.svg" class="img-logo">
+        </a>
+        <div class="container">
+            <a href="home.html">
+                <div class="home-button" id="home-button"><i class="fas fa-home"></i>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <div class="row" style="padding-top: 92px;">
+        <div class="col-sm-12">
+            <div class="image-FS">
+                <h1 class="hero-text">We only have 5 tables! Book your seat before they all are gone!</h1>
+                <div class="button-container">
+
+                    <a href="tables.html">
+                        <button class="red" style="bottom: 20px;"><i class="far fa-calendar-alt"
+                                style="padding-right: 8px;"></i>View tables</button></a>
+
+                    <a href="reservation.html">
+                        <button class="white" style="bottom: 20px;"><i class="far fa-credit-card"
+                                style="padding-right: 8px;"></i>Make reservation</button></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-text"><i class="fas fa-calendar-day" style="padding-right: 12px;"></i>Current
+                        reservations</h1>
+
+                    <div class="section-cards">
+                        <h5 class="card-head" id="card-header">Table number</h5>
+                        <ul id="reservation-details">
+                            <li id="reservation-name">Name: <span style="font-weight: 300"> Foo Bar</span></li>
+                            <li id="reservation-phonenumber">Phone number: <span style="font-weight: 300">
+                                    200000000</span></li>
+                            <li id="reservation-email">Email: <span style="font-weight: 300"> mail@foobar.com</span>
+                            </li>
+                            <li id="reservation-ID">ID: <span style="font-weight: 300"> 1232</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
