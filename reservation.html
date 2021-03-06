@@ -121,6 +121,8 @@
                 id: id
             };
 
+            mydata.push(newReservation);
+
             //ok here we go so this is stop 
             fetch("/api/reservations", 
             {
@@ -134,9 +136,8 @@
                 .then((data) => {
                     console.log('reservation.html', data);
                     alert(`Adding Reservation: ${data.name}`);
-                    mydata.push(data);
                 })
-                .then(data => mydata = data)
+                //.then(data => mydata = data)
                 .catch((error) => {
                     console.error('Error:', error);
                 });
