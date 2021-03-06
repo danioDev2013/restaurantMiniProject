@@ -134,6 +134,7 @@
                 .then((data) => {
                     console.log('reservation.html', data);
                     alert(`Adding Reservation: ${data.name}`);
+                    mydata.push(data);
                 })
                 .then(data => mydata = data)
                 .catch((error) => {
