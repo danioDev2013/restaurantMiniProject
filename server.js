@@ -21,6 +21,7 @@ app.use(express.json());
 //Routes
 
 //Three endpoints for the html files
+app.use(express.static(__dirname + '/'));
 
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "home.html")));
 
