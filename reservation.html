@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="section-text"><i class="far fa-calendar-plus" style="padding-right: 12px;"></i>Table reservation</h1>
-                    <form class="reservation" method="POST" id="reservation-form">
+                    <form class="reservation" method="POST" id="reservation-form" role="form">
 
                         <div class="form-group">
                         <label for="name">Name</label>
@@ -86,11 +86,11 @@
                         <label for="ID">ID</label>
                         <input type="ID" class="form-control" placeholder="ID" id="ID" required>
                         </div>
-
-                        <button class="red" type="submit" id="submit-form" style="margin-bottom: 12px; margin-left: 0px;"><i class="fas fa-utensils" style="padding-right: 8px;"></i>Submit
-                            booking</button>
-
                     </form>
+                    <br>
+                    <button class="red" type="submit" id="submit-form" style="margin-bottom: 12px; margin-left: 0px;"><i class="fas fa-utensils" style="padding-right: 8px;"></i>
+                        Submit booking
+                    </button>
                 </div>
             </div>
         </div>
@@ -99,38 +99,46 @@
     <script>
         //Defining a variable and getting that variable from the html and its the oh ya its the button right.
         const button = document.getElementById("submit-form");
+
         var mydata;
 
         //Adding an event listener you dont need to say that click part.
-        button.addEventListener("click", (somethingElse) =>
-        {
+        button.addEventListener("click", (somethingElse) => {
             //Preventing from refreshing the page.
             somethingElse.preventDefault();
 
             //Adding four variables to the each of the from inputs.
-            const name = document.getElementById("Name").value;
-            const phonenumber = document.getElementById("phone-number").value;
-            const email = document.getElementById("email").value;
-            const id = document.getElementById("ID").value;
+            let name = document.getElementById("Name").value.trim();
+            let phonenumber = document.getElementById("phone-number").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let id = document.getElementById("ID").value.trim();
 
             //How would you creating or no creating an object that were going to push into the reservations array is that the best way to say that conner?
-            const newReservation = {
+            let newReservation = {
                 name: name,
                 phone: phonenumber,
                 email: email,
                 id: id
-            }
+            };
 
             //ok here we go so this is stop 
             fetch("/api/reservations", 
             {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(newReservation)
             })
                 .then(response => response.json())
+                .then((data) => {
+                    console.log('reservsation.html', data);
+                    alert(`Adding Reservation: ${data.name}`);
+                })
                 .then(data => mydata = data)
-                .catch(error => console.error(error));
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         });
 
         console.log(mydata);
